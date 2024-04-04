@@ -20,7 +20,7 @@ router.get('/people/:id', async(req, res) => {
 //Add a Record - Method: POST
 router.post('/people', async(req, res) => {
     let records = await People.create(req.body);
-    res.json(records);
+    res.json(records)
 });
 
 // Update a Record - Method: PUT
