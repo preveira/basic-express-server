@@ -3,6 +3,7 @@
 [Render Deployment Link](https://basic-express-server-xttk.onrender.com)
 
 **Project description**
+API Server that uses GET/POST/PATCH/DELETE Methods to CRUD within the App.
 
 **Getting Started**
 
@@ -12,7 +13,7 @@ For development, you will only need Node installed in your environment. Please u
 Install
 git clone https://github.com/preveira/basic-express-server.git
 cd projects
-npm install express cors jest supertest dotenv nodemon
+npm install express cors jest supertest dotenv nodemon sequelize sqlite3
 Configure app
 Add PORT:3000 to Environment
 
@@ -25,9 +26,14 @@ npm test
 
 
 **Languages & tools**
-NoeJS
+NodeJS
 Express
 Jest
+SQL
+SQLite3
+Dotenv
+Nodemon
+Supertest
 
 Change Log
 Version 0.0.1
