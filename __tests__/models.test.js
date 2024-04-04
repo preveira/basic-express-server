@@ -1,4 +1,4 @@
-const { sequelize, Pokemon } = require('../src/models');
+const { sequelize, People } = require('../src/models');
 
 // setup script
 beforeAll(async () => {
