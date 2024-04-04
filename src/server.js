@@ -6,10 +6,10 @@ const { validateName } = require('./middleware/validator.js');
 const { logger } = require('./middleware/logger.js');
 const handleNotFound = require('./error-handlers/404.js');
 const handleServerError = require('./error-handlers/500.js');
-// const People = require('./models/people.js');
-// const peopleRouter = require('./routes/people.js');
-// const Sport = require('./models/sport.js');
-// const sportRouter = require('./routes/sport.js');
+const People = require('./models/people.js');
+const peopleRouter = require('./routes/people.js');
+const Sport = require('./models/sport.js');
+const sportRouter = require('./routes/sport.js');
 
 const app = express();
 app.use(cors());
@@ -27,15 +27,11 @@ app.get('/person', validateName, (req, res) => {
 
 app.use(handleNotFound);
 app.use(handleServerError);
-// app.use(People);
-// app.use('/people', peopleRouter);
-// app.use(Sport);
-// app.use('/sport', sportRouter);
+app.use(People);
+app.use('/people', peopleRouter);
+app.use(Sport);
+app.use('/sport', sportRouter);
 
 
-// module.exports = {
-//     start: (port) => app.listen(port, () => {
-//       console.log('API SERVER RUNNING ON PORT ::', port);
-//     }),
-//     app,
-//   };
+
+module.exports = app;
