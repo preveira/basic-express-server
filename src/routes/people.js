@@ -1,40 +1,41 @@
 'use strict';
 
 const express = require('express');
-const { People } = require('../models');
+const { People, Collection } = require('../models');
 
 const router = express.Router();
 
+const CustomerCollection = new Collection(People);
+
+
 //Get All Records - Method: GET
 router.get('/people', async(req, res) => {
-    let records = await People.findAll();
+    let records = await  CustomerCollection.read();
     res.json(records);
 });
 
 //Get One Record - Method: GET
 router.get('/people/:id', async(req, res) => {
-    let records = await People.findOne({ where: { id: req.params.id} });
+    let records = await CustomerCollection.read(req.params.id);
     res.json(records);
 });
 
 //Add a Record - Method: POST
 router.post('/people', async(req, res) => {
-    let records = await People.create(req.body);
+    let records = await CustomerCollection.create(req.body);
     res.json(records)
 });
 
 // Update a Record - Method: PUT
 router.put('/people/:id', async(req, res) => {
-    let records = await People.findByPk(req.params.id); //Pk = Primary Key
-    let updatedRecord = await records.update(req.body); 
-    res.json(updatedRecord);
+    let records = await CustomerCollection.update(req.params.id, req.body);
+    res.json(records);
 });
 
 //Delete a Record - Method: DELETE
 router.delete('/people/:id', async(req, res) => {
-    let records = await People.findByPk(req.params.id);
-    await records.destroy(req.body);
-    res.json(null);
+    let records = await CustomerCollection.delete(req.params.id);
+    res.json(records);
 });
 
 module.exports = router;

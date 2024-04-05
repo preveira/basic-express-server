@@ -1,39 +1,39 @@
-const { sequelize, People } = require('../src/models');
+'use strict';
 
-// setup script
+const { sequelize, People, Sport } = require('../src/models');
+
 beforeAll(async () => {
   await sequelize.sync();
 });
 
 describe('People Model', () => {
-  it('Should create a person row', async () => {
-    const emmittSmith = await People.create({
+  test('Should create a person row', async () => {
+    const testPeople = await People.create({
       name: 'emmitt smith',
       eyeColor: 'brown',
       age: 50,
       weight: 215,
     });
 
-    expect(emmittSmith.name).toEqual('emmitt smith');
-    expect(emmittSmith.eyeColor).toEqual('brown');
-    expect(emmittSmith.age).toEqual(50);
-    expect(emmittSmith.weight).toEqual(215);
+    expect(testPeople.name).toEqual('emmitt smith');
+    expect(testPeople.eyeColor).toEqual('brown');
+    expect(testPeople.age).toEqual(50);
+    expect(testPeople.weight).toEqual(215);
   });
 
-  xit('Should create a sport row', async () => {
-    const pikachu = await Pokemon.create({
-      name: 'Pikachu',
-      type: 'electric',
-      healthPoints: 50,
-      attackPoints: 70
+  test('Should create a sport row', async () => {
+    const testSport = await Sport.create({
+      name: 'football',
+      type: 'contact',
+      fanBase: 500000,
+      yearsActive: 35,
     });
 
-    expect(pikachu.name).toEqual('Pikachu');
-    expect(pikachu.type).toEqual('electric');
-    expect(pikachu.healthPoints).toEqual(50);
-    expect(pikachu.attackPoints).toEqual(70);
+    expect(testSport.name).toEqual('football');
+    expect(testSport.type).toEqual('contact');
+    expect(testSport.fanBase).toEqual(500000);
+    expect(testSport.yearsActive).toEqual(35);
   });
 
 
-  xit('Should read a pokemon from the table', async () => {});
 });
